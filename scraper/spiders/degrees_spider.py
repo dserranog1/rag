@@ -11,7 +11,7 @@ class DegreesSpider(scrapy.Spider):
         urls = [
             "https://manizales.unal.edu.co/menu/programas-academicos/carreras/matematicas/",
             "https://manizales.unal.edu.co/menu/programas-academicos/carreras/administracion-de-empresas/",
-            "https://www.manizales.unal.edu.co/menu/programas-academicos/carreras/administracion-de-sistemas-informaticos/"
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/carreras/administracion-de-sistemas-informaticos/",
         ]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
