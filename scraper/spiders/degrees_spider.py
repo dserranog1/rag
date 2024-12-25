@@ -10,7 +10,8 @@ class DegreesSpider(scrapy.Spider):
     def start_requests(self):
         urls = [
             "https://manizales.unal.edu.co/menu/programas-academicos/carreras/matematicas/",
-            "https://manizales.unal.edu.co/menu/programas-academicos/carreras/administracion-de-empresas/"
+            "https://manizales.unal.edu.co/menu/programas-academicos/carreras/administracion-de-empresas/",
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/carreras/administracion-de-sistemas-informaticos/"
         ]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
@@ -38,43 +39,15 @@ class DegreesSpider(scrapy.Spider):
         md_content += f"---\n\n"
 
         md_content += f"# {first_h3}\n\n"
-        processed_h2 = set()  # Track processed H2 elements to avoid duplicates
 
-        tab_container = sel.css(".t3ddy.t3ddy-tabContainer")
-        h2_elements = tab_container.css("h2")
+        # Find all elements with the class "t3ddy-item t3ddy-tab-item"
+        tab_items = sel.css(".t3ddy-item.t3ddy-tab-item")
 
-        for h2 in h2_elements:
-            h2_text = h2.xpath("text()").get()
-            if not h2_text or h2_text in processed_h2:
-                continue
-
-            processed_h2.add(h2_text.strip())
-
-            md_content += f"## {h2_text.strip()}\n\n"
-
-            parent = h2.xpath("..")
-
-            h3_elements = parent.xpath(".//h3")
-            for h3 in h3_elements:
-                h3_text = h3.xpath("text()").get()
-                if h3_text:
-                    md_content += f"### {h3_text.strip()}\n\n"
-
-            h4_elements = parent.xpath(".//h4")
-            for h4 in h4_elements:
-                h4_text = h4.xpath("text()").get()
-                if h4_text:
-                    md_content += f"#### {h4_text.strip()}\n\n"
-
-            text_content = parent.xpath(".//text()[normalize-space()]").getall()
+        for tab_item in tab_items:
+            # Extract all text content within the tab item
+            text_content = tab_item.xpath(".//text()[normalize-space()]").getall()
             for text in text_content:
-                is_strong = parent.xpath(
-                    f".//*[text()='{text.strip()}']/ancestor::strong"
-                )
-                if is_strong:
-                    md_content += f"**{text.strip()}**\n\n"
-                else:
-                    md_content += f"{text.strip()}\n\n"
+                md_content += f"{text.strip()}\n\n"
 
         # Save the markdown content to a file in the "documents" folder
         output_dir = Path("documents")
