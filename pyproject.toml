@@ -17,6 +17,7 @@ langchain-ollama = "^0.2.2"
 unstructured = {extras = ["md"], version = "^0.16.11"}
 nltk = "^3.9.1"
 langchain-community = "^0.3.13"
+sentence-transformers = "^3.3.1"
 
 
 [build-system]
