@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  chromadb:
+    image: chromadb/chroma:0.5.20
+    container_name: chromadb
+    ports:
+      - "8000:8000"  # Map container port 8000 to host port 8000
+    volumes:
+      - chroma_data:/chroma/chroma  # Named volume for persistent storage
+    environment:
+      - IS_PERSISTENT=TRUE
+      - PERSIST_DIRECTORY=/chroma/chroma
+      - ANONYMIZED_TELEMETRY=TRUE
+
+volumes:
+  chroma_data:
