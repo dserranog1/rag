@@ -4,8 +4,8 @@ from rag_agent_man.loader import load_documents
 
 def get_splitter():
     return RecursiveCharacterTextSplitter(
-        chunk_size=800,  # ~750-1000 characters for ~150-180 words
-        chunk_overlap=100,  # Overlap of 50-100 characters
+        chunk_size=650,
+        chunk_overlap=100,
     )
 
 
