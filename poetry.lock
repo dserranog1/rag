@@ -1827,6 +1827,32 @@ files = [
 six = "*"
 
 [[package]]
+name = "langfuse"
+version = "2.57.5"
+description = "A client library for accessing langfuse"
+optional = false
+python-versions = "<4.0,>=3.9"
+files = [
+    {file = "langfuse-2.57.5-py3-none-any.whl", hash = "sha256:5bc53ee33e7e58b4d112abdf971f16bc9e7e8e8ba4690b3c4339d37b83601f80"},
+    {file = "langfuse-2.57.5.tar.gz", hash = "sha256:48b4db5d4e86824153ad6f1e10d14c2c7994bcbf67578c2bdd6786bf3896c3e8"},
+]
+
+[package.dependencies]
+anyio = ">=4.4.0,<5.0.0"
+backoff = ">=1.10.0"
+httpx = ">=0.15.4,<1.0"
+idna = ">=3.7,<4.0"
+packaging = ">=23.2,<25.0"
+pydantic = ">=1.10.7,<3.0"
+requests = ">=2,<3"
+wrapt = ">=1.14,<2.0"
+
+[package.extras]
+langchain = ["langchain (>=0.0.309)"]
+llama-index = ["llama-index (>=0.10.12,<2.0.0)"]
+openai = ["openai (>=0.27.8)"]
+
+[[package]]
 name = "langsmith"
 version = "0.2.6"
 description = "Client library to connect to the LangSmith LLM Tracing and Evaluation Platform."
@@ -5652,4 +5678,4 @@ testing = ["coverage[toml]", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.13"
-content-hash = "0419c7aa6fae313cfd685da69f30ce35dc400ab07eeb56a38a6abe731b25c553"
+content-hash = "5352d7b1eb322c807da333754ba1dffe70b816517673236e660aa1028e3e05f5"

@@ -19,6 +19,7 @@ nltk = "^3.9.1"
 langchain-community = "^0.3.13"
 sentence-transformers = "^3.3.1"
 langchain-huggingface = "^0.1.2"
+langfuse = "^2.57.5"
 
 
 [build-system]
