@@ -4,6 +4,7 @@ from typing_extensions import List, TypedDict
 from langgraph.graph import START, StateGraph
 from rag_agent_man.prompt import get_promt
 from rag_agent_man.vector_store import get_vector_store
+from langfuse.callback import CallbackHandler
 
 
 class State(TypedDict):
@@ -40,4 +41,5 @@ if __name__ == "__main__":
     graph_builder = StateGraph(State).add_sequence([get_question, retrieve, generate, print_answer])
     graph_builder.add_edge(START, "get_question")
     graph = graph_builder.compile()
-    graph.invoke({"question": None})
+    langfuse_handler = CallbackHandler()
+    graph.invoke({"question": None}, config={"callbacks": [langfuse_handler]})
