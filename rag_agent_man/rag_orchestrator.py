@@ -1,7 +1,8 @@
 import subprocess
+
+from rag_agent_man.db import load_documents_to_db
 from rag_agent_man.loader import load_documents
 from rag_agent_man.splitter import split_documents
-from rag_agent_man.db import load_documents_to_db
 
 
 def scrape_data():

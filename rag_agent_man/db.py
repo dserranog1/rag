@@ -1,11 +1,12 @@
 import argparse
+
 from rag_agent_man.loader import load_documents
+from rag_agent_man.rag import RAG
 from rag_agent_man.splitter import split_documents
-from rag_agent_man.vector_store import get_vector_store
 
 
 def load_documents_to_db(docs, delete=False):
-    vector_store = get_vector_store()
+    vector_store = RAG.get_vector_store()
     if delete:
         vector_store.reset_collection()
     return vector_store.add_documents(documents=docs)

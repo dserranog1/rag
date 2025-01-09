@@ -1,16 +1,9 @@
-from langchain_text_splitters import RecursiveCharacterTextSplitter
 from rag_agent_man.loader import load_documents
-
-
-def get_splitter():
-    return RecursiveCharacterTextSplitter(
-        chunk_size=2000,
-        chunk_overlap=200,
-    )
+from rag_agent_man.rag import RAG
 
 
 def split_documents(docs):
-    splitter = get_splitter()
+    splitter = RAG.get_splitter()
     return splitter.split_documents(docs)
 
 
