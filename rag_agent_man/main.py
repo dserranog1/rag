@@ -34,12 +34,11 @@ def generate(state: State):
     response = llm.invoke(messages)
     return {"answer": response.content}
 
-def print_answer(state: State):
-    print(state["answer"])
-
 if __name__ == "__main__":
-    graph_builder = StateGraph(State).add_sequence([get_question, retrieve, generate, print_answer])
-    graph_builder.add_edge(START, "get_question")
-    graph = graph_builder.compile()
     langfuse_handler = CallbackHandler()
-    graph.invoke({"question": None}, config={"callbacks": [langfuse_handler]})
+    question = input("Hello! How can I help you? \n")
+    graph_builder = StateGraph(State).add_sequence([retrieve, generate])
+    graph_builder.add_edge(START, "retrieve")
+    graph = graph_builder.compile()
+    for state in graph.stream({"question": question}, config={"callbacks": [langfuse_handler]}):
+        print(state)
