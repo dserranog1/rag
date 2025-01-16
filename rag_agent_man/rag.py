@@ -37,10 +37,11 @@ class RAG:
             chunk_overlap=200,
         )
 
-    def retrieve(self, query, top_k=2):
+    def retrieve(self, query, top_k=2, as_list=False):
         retrieved_docs = self.vector_store.similarity_search(query, top_k)
-        docs_content = "\n\n".join(doc.page_content for doc in retrieved_docs)
-        return docs_content
+        if as_list:
+            return [doc.page_content for doc in retrieved_docs]
+        return "\n\n".join(doc.page_content for doc in retrieved_docs)
 
     def generate(self, query, relevant_docs):
         messages = self.prompt.invoke({"question": query, "context": relevant_docs})
