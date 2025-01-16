@@ -1,17 +1,45 @@
-version: '3.8'
-
 services:
   chromadb:
     image: chromadb/chroma:0.5.20
     container_name: chromadb
     ports:
-      - "8000:8000"  # Map container port 8000 to host port 8000
+      - "8000:8000" 
     volumes:
-      - chroma_data:/chroma/chroma  # Named volume for persistent storage
+      - chroma_data:/chroma/chroma
     environment:
       - IS_PERSISTENT=TRUE
       - PERSIST_DIRECTORY=/chroma/chroma
       - ANONYMIZED_TELEMETRY=TRUE
 
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+              count: 1
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+      - ./model_pull.sh:/entrypoint.sh
+    entrypoint: ["/usr/bin/bash", "entrypoint.sh"]
+
+  rag_agent:
+    build: .
+    container_name: rag_agent
+    depends_on:
+      - chromadb
+      - ollama
+    volumes:
+      - .:/app
+    # ports:
+    #   - "8080:8080"  # only if you expose an API from your RAG code
+    command: ["poetry", "run", "deepeval", "test", "run", "rag_agent_man"]
+
 volumes:
   chroma_data:
+  ollama_data:

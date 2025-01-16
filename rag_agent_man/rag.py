@@ -17,7 +17,7 @@ class RAG:
 
     @classmethod
     def get_llm(cls):
-        return ChatOllama(model="llama3.1:8b")
+        return ChatOllama(model="llama3.1:8b", base_url="ollama")
 
     @classmethod
     def get_embeddings(cls):
@@ -27,7 +27,7 @@ class RAG:
 
     @classmethod
     def get_vector_store(cls):
-        chroma_client = chromadb.HttpClient(host="localhost", port=8000)
+        chroma_client = chromadb.HttpClient(host="chromadb", port=8000)
         return Chroma(embedding_function=cls.get_embeddings(), client=chroma_client)
 
     @classmethod
