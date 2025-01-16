@@ -36,6 +36,7 @@ services:
       - ollama
     volumes:
       - .:/app
+      - hugs_cache:/root/.cache/hugs
     # ports:
     #   - "8080:8080"  # only if you expose an API from your RAG code
     command: ["poetry", "run", "deepeval", "test", "run", "rag_agent_man"]
@@ -43,3 +44,4 @@ services:
 volumes:
   chroma_data:
   ollama_data:
+  hugs_cache:
