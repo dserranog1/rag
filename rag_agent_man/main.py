@@ -25,7 +25,6 @@ def generate(state: State, config):
 
 
 if __name__ == "__main__":
-    langfuse_handler = CallbackHandler()
     question = input("Hello! How can I help you? \n")
     rag = RAG()
     graph_builder = StateGraph(State).add_sequence([retrieve, generate])
@@ -33,6 +32,6 @@ if __name__ == "__main__":
     graph = graph_builder.compile()
     for state in graph.stream(
         {"question": question},
-        config={"callbacks": [langfuse_handler], "configurable": {"rag": rag}},
+        config={"configurable": {"rag": rag}},
     ):
         print(state)

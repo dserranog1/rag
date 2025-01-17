@@ -29,6 +29,8 @@ services:
     entrypoint: ["/usr/bin/bash", "entrypoint.sh"]
 
   rag_agent:
+    stdin_open: true
+    tty: true
     build: .
     container_name: rag_agent
     depends_on:
@@ -39,7 +41,8 @@ services:
       - hugs_cache:/root/.cache/hugs
     # ports:
     #   - "8080:8080"  # only if you expose an API from your RAG code
-    command: ["poetry", "run", "deepeval", "test", "run", "rag_agent_man"]
+    # command: ["poetry", "run", "python", "-m" ,"rag_agent_man.main"]
+    command: ["poetry", "run", "python", "-m" ,"rag_agent_man.tests.evaluate_retriever"]
 
 volumes:
   chroma_data:
