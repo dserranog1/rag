@@ -17,7 +17,7 @@ class RAG:
 
     @classmethod
     def get_llm(cls):
-        return ChatOllama(model="llama3.1:8b", base_url="ollama")
+        return ChatOllama(model="hermes3:8b", base_url="ollama")
 
     @classmethod
     def get_embeddings(cls):
