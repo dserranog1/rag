@@ -33,7 +33,8 @@ ENV PYTHONUNBUFFERED=1 \
     # paths
     # this is where our requirements + virtual environment will live
     PYSETUP_PATH="/opt/pysetup" \
-    VENV_PATH="/opt/pysetup/.venv"
+    VENV_PATH="/opt/pysetup/.venv" \
+    NLTK_DATA="/root/nltk_data"
 
 
 # prepend poetry and venv to path
@@ -66,6 +67,9 @@ COPY poetry.lock pyproject.toml ./
 RUN --mount=type=cache,target=/root/.cache \
     poetry install --without=dev
 
+RUN [ "python", "-c", "import nltk; nltk.download('punkt')" ]
+RUN [ "python", "-c", "import nltk; nltk.download('punkt_tab')" ]
+RUN [ "python", "-c", "import nltk; nltk.download('averaged_perceptron_tagger_eng')" ]
 
 ################################
 # DEVELOPMENT
@@ -79,6 +83,7 @@ WORKDIR $PYSETUP_PATH
 # copy in our built poetry + venv
 COPY --from=builder-base $POETRY_HOME $POETRY_HOME
 COPY --from=builder-base $PYSETUP_PATH $PYSETUP_PATH
+COPY --from=builder-base $NLTK_DATA $NLTK_DATA
 
 # quicker install AS runtime deps are already installed
 RUN --mount=type=cache,target=/root/.cache \
@@ -98,6 +103,7 @@ WORKDIR /app
 FROM python-base AS production
 ENV FASTAPI_ENV=production
 COPY --from=builder-base $PYSETUP_PATH $PYSETUP_PATH
+COPY --from=builder-base $NLTK_DATA $NLTK_DATA
 COPY ./app /app/
 WORKDIR /app
 CMD ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "main:app"]
