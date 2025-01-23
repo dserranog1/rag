@@ -73,6 +73,7 @@ RUN --mount=type=cache,target=/root/.cache \
 ################################
 FROM python-base AS development
 ENV FASTAPI_ENV=development
+ENV HF_HUB_CACHE="/root/.cache/hugs"
 WORKDIR $PYSETUP_PATH
 
 # copy in our built poetry + venv
