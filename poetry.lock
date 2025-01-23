@@ -769,13 +769,13 @@ typing-inspect = ">=0.4.0,<1"
 
 [[package]]
 name = "deepeval"
-version = "2.2.3"
+version = "2.1.7"
 description = "The Open-Source LLM Evaluation Framework."
 optional = false
-python-versions = "<3.14,>=3.9"
+python-versions = "<3.13,>=3.9"
 files = [
-    {file = "deepeval-2.2.3-py3-none-any.whl", hash = "sha256:9b5a5d77aebb0e1987b74fd5c00d5fd3c62b4eed970298014638cf24c257f930"},
-    {file = "deepeval-2.2.3.tar.gz", hash = "sha256:de4fd1399d54b8560b85c3cf053c7f5e49ed513da6767174c9f6c27a2507dedc"},
+    {file = "deepeval-2.1.7-py3-none-any.whl", hash = "sha256:ca0ce48067e4fc9e405c13abcf4187b8a1ff94d61a0b22daf8011e72f8ba1b65"},
+    {file = "deepeval-2.1.7.tar.gz", hash = "sha256:ba71e568339a274246cb00327d25704e75438a76c5f22540af7bd843b2a0762a"},
 ]
 
 [package.dependencies]
@@ -6100,4 +6100,4 @@ testing = ["coverage[toml]", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.11,<3.13"
-content-hash = "a067fe69686978c02e156438c2ec5b22cc930af10ba669ece77868ccc5c6ed9c"
+content-hash = "64d3d82bd8bfa414b6d569264fcbd79ae545ee12fdc636c9e6ac5d462298628d"
