@@ -42,8 +42,8 @@ def create_deep_eval_test_cases(
     ]
 
 
-def parse_test_data(path="rag_agent_man/tests/data.json"):
-    q_a_file_name = "rag_agent_man/tests/data.json"
+def parse_test_data(path):
+    q_a_file_name = path
     with open(q_a_file_name, "r", encoding="utf-8") as json_file:
         q_a = json.load(json_file)
 

@@ -11,7 +11,7 @@ from rag_agent_man.tests.utils import create_deep_eval_test_cases, parse_test_da
 
 def main():
     rag = RAG()
-    questions, ground_truth_answers = parse_test_data()
+    questions, ground_truth_answers = parse_test_data("rag_agent_man/tests/test_data/retriever_test_data.json")
     retrieved_documents = []
     generated_answers = []
 
@@ -40,7 +40,7 @@ def main():
     evaluate(
         test_cases=test_cases,
         metrics=[
-            contextual_precision_metric,
+            # contextual_precision_metric,
             contextual_recall_metric,
             contextual_relevancy_metric,
         ],

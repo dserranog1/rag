@@ -12,6 +12,14 @@ class DegreesSpider(scrapy.Spider):
             "https://manizales.unal.edu.co/menu/programas-academicos/carreras/matematicas/",
             "https://manizales.unal.edu.co/menu/programas-academicos/carreras/administracion-de-empresas/",
             "https://www.manizales.unal.edu.co/menu/programas-academicos/carreras/administracion-de-sistemas-informaticos/",
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/carreras/arquitectura/",
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/carreras/gestion-cultural-y-comunicativa/",
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/carreras/ingenieria-civil/",
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/carreras/ingenieria-electrica/",
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/carreras/ingenieria-electronica/",
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/carreras/ingenieria-fisica/",
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/carreras/ingenieria-industrial/",
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/carreras/ingenieria-quimica/",
         ]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)

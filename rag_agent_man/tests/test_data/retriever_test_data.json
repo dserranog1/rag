@@ -1,0 +1,46 @@
+[
+  {
+    "question": "cual es el perfil de un aspirante a la carrera de administración de sistema informáticos?",
+    "expected_answer": "Las tecnologías informáticas y su continua actualización. Desarrollar habilidades para generar y plantear alternativas de acción y toma de decisiones. Desplegar habilidades que permitan establecer buenas relaciones interpersonales y comunicación efectiva con su entorno. Buscar la excelencia y calidad en su formación para ser un profesional que contribuya al desarrollo de las organizaciones modernas. Habilidades para establecer adecuadas relaciones interpersonales. Aptitudes para comunicarse efectivamente con los demás, en forma oral y escrita. Interés por la continua actualización, interpretación y evolución del saber profesional. Alto sentido de responsabilidad y sensibilidad social."
+  },
+  {
+    "question": "Que perfil debería tener un aspirante a la carrera de matemáticas?",
+    "expected_answer": "Aptitudes de tipo analítico y de cálculo matemático. Interés científico. Inclinación preferencial por el manejo de las matemáticas y de la física. Aptitudes para enfrentar problemas desde diferentes puntos de vista. Interés permanente en actualización. "
+  },
+  {
+    "question": "Que perfil debería tener un aspirante a la carrera de administración de empresas?",
+    "expected_answer": "Interés en desarrollar habilidades de liderazgo. Espíritu Emprendedor. Actitud crítica y analítica. Motivación hacia el trabajo interdisciplinar. Orientación hacia la solución de problemas. Disposición hacia las relaciones interpersonales y comunicativas."
+  },
+  {
+    "question": "Que perfil debería tener un aspirante a la carrera de arquitectura?",
+    "expected_answer": "Disposición y habilidad para la comunicación y materialización de ideas. Gran capacidad de razonamiento analítico y abstracto. Creatividad para encontrar alternativas de solución a problemas concretos. Agudeza visual, percepción adecuada del espacio y sus lógicas. Gran capacidad para establecer adecuadas relaciones interpersonales. Capacidad de liderazgo, capacidad para planear, dirigir, organizar y evaluar."
+  },
+  {
+    "question": "Que perfil debería tener un aspirante a la carrera de arquitectura?",
+    "expected_answer": "El aspirante al pregrado en Gestión Cultural y Comunicativa presenta un interés por las ciencias humanas puestas al servicio de la sociedad; se caracteriza por poseer vocación de servicio e interés por potenciar en sí mismo y en otros, habilidades comunicativas; es sensible a los procesos sociales y comunicativos en toda la diversidad de sus expresiones. Nuestros aspirantes son personas creativas, propositivas, críticas, con mente abierta a un mundo diverso y heterogéneo, con miradas plurales frente a lo político, ideológico, religioso y moral, que pueden entender el ámbito micro (familiar, barrial, local), lo macro (regional, nacional, global) y sus articulaciones en los diferentes contextos."
+  },
+  {
+    "question": "cual es el perfil de un aspirante a la carrera de ingenieria civil?",
+    "expected_answer": "Aptitud matemática y de cálculo. Capacidad analítica y deductiva. Capacidad creativa e innovadora. Habilidades para manejar conceptos, así como recursos físicos y humanos. Gran sentido común y práctico. Capacidad para tomar decisiones rápidas, acertadas y lógicas. Excelentes relaciones interpersonales. Capacidad de servicio social. Interés permanente de actualización. Capacidad para adaptarse a diferentes condiciones ambientales."
+  },
+  {
+    "question": "Que perfil debería tener un aspirante a la carrera de ingenieria electrica?",
+    "expected_answer": "Los aspirantes a la carrera de Ingeniería Eléctrica deberán tener una inclinación preferencial por áreas como matemáticas, física e informática; poseer aptitudes para analizar, procesar y concluir eventos; contar con destreza para la operación de dispositivos eléctricos y electrónicos, operación de equipos de medida, capacidad de síntesis, comunicación oral y escrita, y disposición de trabajo en equipo."
+  },
+  {
+    "question": "Que perfil debería tener un aspirante a la carrera de ingenieria electronica?",
+    "expected_answer": "Los aspirantes a realizar estudios en Ingeniería Electrónica deben tener aptitud de aprendizaje en temas relacionados con el estudio y aplicación de los campos electromagnéticos, programación, teoría de circuitos y sistemas digitales; exigiendo del aspirante inclinación por áreas fundamentales como matemáticas, física e informática. También se exige destreza y originalidad para desarrollar diferentes actividades de complejidad técnica. El aspirante debe interesarse por las innovaciones y avances tecnológicos propios de la electrónica."
+  },
+  {
+    "question": "Que perfil debería tener un aspirante a la carrera de ingenieria fisica",
+    "expected_answer": "El aspirante al programa de Ingeniería Física debe tener inclinación preferencial por el manejo de las matemáticas y de la física, aptitudes de tipo analítico y de cálculo matemático, capacidad de síntesis, interés científico y tecnológico y aptitud abierta para enfrentar problemas desde diferentes puntos de vista."
+  },
+  {
+    "question": "cual es el perfil de un aspirante a la carrera de ingeniera industrial?",
+    "expected_answer": "Un alto sentido de lo ético en sus actuaciones. Capacidad de comunicación oral y escrita. Capacidad de crítica. Fundamentación en ciencias exactas y humanas."
+  },
+  {
+    "question": "Que perfil debería tener un aspirante a la carrera de ingenieria quimica?",
+    "expected_answer": "Comprensión e interés por la física, la química, las matemáticas y las ciencias en general. Aptitud matemática y razonamiento abstracto. Capacidad para establecer adecuadas relaciones interpersonales. Alto sentido de responsabilidad y ética. Actitud hacia la investigación."
+  }
+]
