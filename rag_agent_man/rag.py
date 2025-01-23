@@ -33,7 +33,7 @@ class RAG:
     @classmethod
     def get_splitter(cls):
         return RecursiveCharacterTextSplitter(
-            chunk_size=2000,
+            chunk_size=1340,
             chunk_overlap=200,
         )
 
