@@ -769,13 +769,13 @@ typing-inspect = ">=0.4.0,<1"
 
 [[package]]
 name = "deepeval"
-version = "2.1.8"
+version = "2.2.3"
 description = "The Open-Source LLM Evaluation Framework."
 optional = false
-python-versions = "<3.13,>=3.9"
+python-versions = "<3.14,>=3.9"
 files = [
-    {file = "deepeval-2.1.8-py3-none-any.whl", hash = "sha256:73fb8048ef12b3ecd8ebe82fdc81e8ce5827919aa0277d34ecc0d87b36cbc265"},
-    {file = "deepeval-2.1.8.tar.gz", hash = "sha256:380e70e9c6f71c035145bdd89b84b8bc8ad9a797eb4ebb2ec3bc2881eff4d6b8"},
+    {file = "deepeval-2.2.3-py3-none-any.whl", hash = "sha256:9b5a5d77aebb0e1987b74fd5c00d5fd3c62b4eed970298014638cf24c257f930"},
+    {file = "deepeval-2.2.3.tar.gz", hash = "sha256:de4fd1399d54b8560b85c3cf053c7f5e49ed513da6767174c9f6c27a2507dedc"},
 ]
 
 [package.dependencies]
