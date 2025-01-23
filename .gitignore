@@ -172,3 +172,5 @@ cython_debug/
 
 .deepeval_telemtry.txt
 .deepeval-cache.json
+
+documents

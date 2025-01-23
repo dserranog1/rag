@@ -3,7 +3,7 @@ services:
     image: chromadb/chroma:0.5.20
     container_name: chromadb
     ports:
-      - "8000:8000" 
+      - "8000:8000"
     volumes:
       - chroma_data:/chroma/chroma
     environment:
@@ -31,7 +31,9 @@ services:
   rag_agent:
     stdin_open: true
     tty: true
-    build: .
+    build:
+      context: .
+      target: development
     container_name: rag_agent
     depends_on:
       - chromadb
@@ -39,10 +41,7 @@ services:
     volumes:
       - .:/app
       - hugs_cache:/root/.cache/hugs
-    # ports:
-    #   - "8080:8080"  # only if you expose an API from your RAG code
-    # command: ["poetry", "run", "python", "-m" ,"rag_agent_man.main"]
-    command: ["poetry", "run", "python", "-m" ,"rag_agent_man.tests.evaluate_retriever"]
+    command: ["python", "-m", "rag_agent_man.tests.evaluate_retriever"]
 
 volumes:
   chroma_data:
