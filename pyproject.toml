@@ -20,11 +20,14 @@ sentence-transformers = "^3.3.1"
 langchain-huggingface = "^0.1.2"
 langfuse = "^2.57.5"
 langgraph = "^0.2.61"
-deepeval = "2.1.7"
+fastapi = "^0.115.7"
 
 [tool.poetry.group.dev.dependencies]
+deepeval = "2.1.7"
 ruff = "^0.8.4"
 
+[tool.poetry.group.frontend.dependencies]
+streamlit = "^1.41.1"
 
 [build-system]
 requires = ["poetry-core"]

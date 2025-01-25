@@ -1,37 +1,33 @@
-from langchain_core.documents import Document
-from langfuse.callback import CallbackHandler
-from langgraph.graph import START, StateGraph
-from typing_extensions import List, TypedDict
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 
+from rag_agent_man.graph import get_graph
 from rag_agent_man.rag import RAG
 
+app = FastAPI()
 
-class State(TypedDict):
+# CORS configuration (needed for frontend communication)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+class QuestionRequest(BaseModel):
     question: str
-    context: List[Document]
-    answer: str
 
 
-def retrieve(state: State, config):
-    rag = config["configurable"]["rag"]
-    docs = rag.retrieve(state["question"])
-    return {"context": docs}
-
-
-def generate(state: State, config):
-    rag = config["configurable"]["rag"]
-    response = rag.generate(state["question"], state["context"])
-    return {"answer": response.content}
-
-
-if __name__ == "__main__":
-    question = input("Hello! How can I help you? \n")
+@app.post("/ask")
+async def ask_question(request: QuestionRequest):
     rag = RAG()
-    graph_builder = StateGraph(State).add_sequence([retrieve, generate])
-    graph_builder.add_edge(START, "retrieve")
-    graph = graph_builder.compile()
-    for state in graph.stream(
-        {"question": question},
+    graph = get_graph()
+    
+    final_state = graph.invoke({"question": request.question},
         config={"configurable": {"rag": rag}},
-    ):
-        print(state)
+    )
+
+    final_answer = final_state["answer"]
+    return {"answer": final_answer}

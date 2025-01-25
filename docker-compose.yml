@@ -41,7 +41,19 @@ services:
     volumes:
       - .:/app
       - hugs_cache:/root/.cache/hugs
-    command: ["python", "-m", "rag_agent_man.tests.evaluate_retriever"]
+
+  frontend:
+    build:
+      context: .
+      dockerfile: ./frontend/Dockerfile
+      target: development
+    container_name: rag_frontend
+    ports:
+      - "8501:8501"
+    depends_on:
+      - rag_agent
+    volumes:
+      - ./frontend:/app/frontend
 
 volumes:
   chroma_data:

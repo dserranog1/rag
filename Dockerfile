@@ -65,7 +65,7 @@ COPY poetry.lock pyproject.toml ./
 
 # install runtime deps - uses $POETRY_VIRTUALENVS_IN_PROJECT internally
 RUN --mount=type=cache,target=/root/.cache \
-    poetry install --without=dev
+    poetry install --without=dev,frontend
 
 RUN [ "python", "-c", "import nltk; nltk.download('punkt')" ]
 RUN [ "python", "-c", "import nltk; nltk.download('punkt_tab')" ]
@@ -92,8 +92,9 @@ RUN --mount=type=cache,target=/root/.cache \
 # will become mountpoint of our code
 WORKDIR /app
 
-# EXPOSE 8000
-# CMD ["uvicorn", "--reload", "main:app"]
+EXPOSE 8800
+CMD ["uvicorn", "--host", "0.0.0.0", "--port", "8800",  "--reload", "rag_agent_man.main:app"]
+
 
 
 ################################
