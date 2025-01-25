@@ -37,7 +37,7 @@ class RAG:
             chunk_overlap=200,
         )
 
-    def retrieve(self, query, top_k=2, as_list=False):
+    def retrieve(self, query, top_k=3, as_list=False):
         retrieved_docs = self.vector_store.similarity_search(query, top_k)
         if as_list:
             return [doc.page_content for doc in retrieved_docs]
