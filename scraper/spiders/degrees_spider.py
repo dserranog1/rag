@@ -36,14 +36,13 @@ class DegreesSpider(scrapy.Spider):
         first_h3 = first_h3.strip()
 
         # Extract metadata
-        page_title = response.xpath("//title/text()").get().strip()
+        # page_title = response.xpath("//title/text()").get().strip()
         url = response.url
-        extracted_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        # extracted_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         md_content = f"---\n"
-        md_content += f"title: {page_title}\n"
         md_content += f"url: {url}\n"
-        md_content += f"extracted: {extracted_date}\n"
+        # md_content += f"extracted: {extracted_date}\n"
         md_content += f"---\n\n"
 
         md_content += f"# {first_h3}\n\n"
