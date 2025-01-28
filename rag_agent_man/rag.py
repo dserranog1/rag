@@ -37,10 +37,13 @@ class RAG:
             chunk_overlap=200,
         )
 
-    def retrieve(self, query, top_k=3, as_list=False):
+    def retrieve(self, query, top_k=3, as_list=True):
         retrieved_docs = self.vector_store.similarity_search(query, top_k)
         if as_list:
-            return [doc.page_content for doc in retrieved_docs]
+            return [
+                {"content": doc.page_content, "source": doc.metadata}
+                for doc in retrieved_docs
+            ]
         return "\n\n".join(doc.page_content for doc in retrieved_docs)
 
     def generate(self, query, relevant_docs):
