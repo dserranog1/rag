@@ -15,6 +15,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Instantiate RAG once and reuse it
+rag = RAG()
+graph = get_graph()
 
 class QuestionRequest(BaseModel):
     question: str
@@ -22,9 +25,6 @@ class QuestionRequest(BaseModel):
 
 @app.post("/ask")
 async def ask_question(request: QuestionRequest):
-    rag = RAG()
-    graph = get_graph()
-    
     final_state = graph.invoke({"question": request.question},
         config={"configurable": {"rag": rag}},
     )
