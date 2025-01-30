@@ -1,4 +1,3 @@
-from datetime import datetime
 from pathlib import Path
 
 import scrapy
@@ -9,6 +8,7 @@ class DegreesSpider(scrapy.Spider):
 
     def start_requests(self):
         urls = [
+            # undergrad
             "https://manizales.unal.edu.co/menu/programas-academicos/carreras/matematicas/",
             "https://manizales.unal.edu.co/menu/programas-academicos/carreras/administracion-de-empresas/",
             "https://www.manizales.unal.edu.co/menu/programas-academicos/carreras/administracion-de-sistemas-informaticos/",
@@ -20,6 +20,44 @@ class DegreesSpider(scrapy.Spider):
             "https://www.manizales.unal.edu.co/menu/programas-academicos/carreras/ingenieria-fisica/",
             "https://www.manizales.unal.edu.co/menu/programas-academicos/carreras/ingenieria-industrial/",
             "https://www.manizales.unal.edu.co/menu/programas-academicos/carreras/ingenieria-quimica/",
+            # grad
+            # "http://www.fadmon.unal.edu.co/inicio/formacion/posgrados/especializacion-en-gestion-de-redes-de-datos.html", page is down
+            # "http://www.fadmon.unal.edu.co/inicio/formacion/posgrados/especializacion-en-bionegocios.html", page is down
+            # "http://www.fadmon.unal.edu.co/inicio/formacion/posgrados/especializacion-en-alta-gerencia.html", page is down
+            # "http://www.fadmon.unal.edu.co/inicio/formacion/posgrados/especializacion-en-auditoria-de-sistemas.html", page is down
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/posgrados/especializacion-en-direccion-de-produccion-y-operaciones/",
+            # "http://www.fadmon.unal.edu.co/inicio/formacion/posgrados/especializacion-en-finanzas-corporativas.html", page is down
+            # "http://www.fadmon.unal.edu.co/inicio/formacion/posgrados/especializacion-en-gerencia-estrategica-de-proyectos.html", page is down
+            # "http://www.fadmon.unal.edu.co/inicio/formacion/posgrados/especializacion-en-gestion-cultural.html", page is down
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/posgrados/especializacion-en-ingenieria-ambiental-area-sanitaria/",
+            # "http://www.fia.unal.edu.co/index.php?option=com_content&view=article&id=263&Itemid=151", page is down
+            # "http://www.fia.unal.edu.co/index.php?option=com_content&view=article&id=264&Itemid=151", page is down
+            # "http://www.fia.unal.edu.co/index.php?option=com_content&view=article&id=535&Itemid=151", page is down
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/posgrados/maestria-de-profundizacion-en-ingenieria-industrial/",
+            # "http://www.fadmon.unal.edu.co/inicio/formacion/posgrados/maestria-en-administracion-de-sistemas-informaticos-investigacion.html", page is down
+            # "http://www.fadmon.unal.edu.co/inicio/formacion/posgrados/maestria-en-administracion-de-sistemas-informaticos-profundizacion.html", page down
+            # "http://www.fadmon.unal.edu.co/inicio/formacion/posgrados/maestria-en-administracion-investigacion.html", page is down
+            # "http://www.fadmon.unal.edu.co/inicio/formacion/posgrados/maestria-en-administracion-profundizacion.html", page is down
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/posgrados/maestria-en-arquitectura/",
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/posgrados/maestria-en-ciencias-fisica/",
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/posgrados/maestria-en-ciencias-matematica-aplicada/",
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/posgrados/maestria-en-ensenanza-de-las-ciencias-exactas-y-naturales/",
+            # "http://www.fadmon.unal.edu.co/inicio/formacion/posgrados/maestria-en-gestion-cultural-investigacion.html", page is down
+            # "http://www.fadmon.unal.edu.co/inicio/formacion/posgrados/maestria-en-gestion-cultural-investigacion.html", page is down
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/posgrados/maestria-en-habitat/",
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/posgrados/maestria-en-ingenieria-automatizacion-industrial/",
+            # "http://www.fia.unal.edu.co/index.php?option=com_content&view=article&id=276&Itemid=152", page is down
+            # "http://www.fia.unal.edu.co/index.php?option=com_content&view=article&id=275&Itemid=152", page is down
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/posgrados/maestria-en-ingenieria-ingenieria-ambiental/",
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/posgrados/maestria-en-ingenieria-ingenieria-electrica/",
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/posgrados/maestria-en-ingenieria-ingenieria-quimica/",
+            # "http://www.fia.unal.edu.co/index.php?option=com_content&view=article&id=306&Itemid=152", page is down
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/posgrados/maestria-en-medio-ambiente-y-desarrollo/",
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/posgrados/maestria-investigativa-en-ingenieria-industrial/",
+            # "http://www.fadmon.unal.edu.co/inicio/formacion/posgrados/doctorado-en-administracion.html", page is down
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/posgrados/doctorado-en-ingenieria-industria-y-organizaciones/",
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/posgrados/doctorado-en-ingenieria-linea-de-investigacion-en-automatica/",
+            "https://www.manizales.unal.edu.co/menu/programas-academicos/posgrados/doctorado-en-ingenieria-ingenieria-quimica/",
         ]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
