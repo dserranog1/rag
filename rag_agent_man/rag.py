@@ -1,11 +1,30 @@
 import chromadb
+from chromadb.utils.embedding_functions.ollama_embedding_function import (
+    OllamaEmbeddingFunction,
+)
 from langchain_chroma import Chroma
+from langchain_core.embeddings import Embeddings
 from langchain_core.prompts import PromptTemplate
-from langchain_huggingface.embeddings import HuggingFaceEmbeddings
 from langchain_ollama import ChatOllama
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 from rag_agent_man.prompt import TEMPLATE
+
+
+class OllamaEmbeddings(Embeddings):
+    """Wrapper to use OllamaEmbeddingFunction with LangChain's Chroma vector store."""
+
+    def __init__(self, model_name="jina/jina-embeddings-v2-base-es", url="http://ollama:11434/api/embeddings"):
+        self.embedding_function = OllamaEmbeddingFunction(url=url, model_name=model_name)
+
+    def embed_documents(self, texts: list[str]) -> list[list[float]]:
+        """Embed multiple documents and return a list of embeddings."""
+        return self.embedding_function(texts)  # Already returns List[List[float]]
+
+    def embed_query(self, text: str) -> list[float]:
+        """Embed a single query and return a single embedding."""
+        return self.embedding_function(text)[0]  # Extract the first (and only) embedding
+
 
 
 class RAG:
@@ -21,9 +40,7 @@ class RAG:
 
     @classmethod
     def get_embeddings(cls):
-        return HuggingFaceEmbeddings(
-            model_name="sentence-transformers/all-MiniLM-L6-v2"
-        )
+        return OllamaEmbeddings()
 
     @classmethod
     def get_vector_store(cls):
